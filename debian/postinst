@@ -1,0 +1,44 @@
+#!/bin/sh
+
+set -e
+
+PKG_VERSION="143.3101438"
+IDE_VERSION="2.1.3.0"
+DL_MIRROR=""
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+db_get google-android-studio-installer/mirror
+
+case "$1" in
+    configure)
+        if [ "${DEBCONF_RECONFIGURE}" = "1" ]; then
+            db_fset google-android-studio-installer/mirror seen false
+            db_input high google-android-studio-installer/mirror || true
+            db_go || true
+        else
+            install -d -m0700 -o nobody -g nogroup /var/cache/google-android-studio-installer
+            cp /usr/share/google-android-studio-installer/Makefile \
+               /usr/share/google-android-studio-installer/android-studio-ide-"$PKG_VERSION"-linux.zip.sha1 \
+               /var/cache/google-android-studio-installer/
+            if [ "$RET" = "https://dl.google.com" ]; then
+                DL_MIRROR="https://dl.google.com/dl/android/studio/ide-zips/$IDE_VERSION/"
+            else
+                DL_MIRROR="http://android-mirror.bugly.qq.com:8080/AndroidStudio/"
+            fi   
+            make -C /var/cache/google-android-studio-installer/ DL_MIRROR="$DL_MIRROR" PKG_VERSION="$PKG_VERSION" install
+	fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,6 @@
+debian/debhelper-build-stamp
+debian/files
+debian/google-android-studio-installer/
+debian/google-android-studio-installer.debhelper.log
+debian/google-android-studio-installer.postrm.debhelper
+debian/google-android-studio-installer.substvars

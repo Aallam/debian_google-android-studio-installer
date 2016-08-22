@@ -1,0 +1,36 @@
+Source: google-android-studio-installer
+Section: contrib/devel
+Priority: optional
+Maintainer: Android tools Maintainer <android-tools-devel@lists.alioth.debian.org>
+Uploaders: Mouaad Aallam <Mouaad@Aallam.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.8
+Homepage: https://developer.android.com/studio/index.html
+Vcs-Git: https://alioth.debian.org/anonscm/git/android-tools/google-android-studio-installer.git
+Vcs-Browser: https://anonscm.debian.org/cgit/android-tools/google-android-studio-installer.git
+
+Package: google-android-studio-installer
+Architecture: i386 amd64
+Depends: wget,
+         make | build-essential | dpkg-dev,
+         unzip,
+         ca-certificates,
+         debconf,
+         po-debconf,
+         lib32z1 [amd64],
+         lib32ncurses5 [amd64],
+         libbz2-1.0:i386 [amd64],
+         lib32stdc++6 [amd64],
+         ${misc:Depends}
+Description: Google Android Studio (IDE) Installer
+ This package will download the Google Android Studio package and create a 
+ Debian package.
+ . 
+ Android Studio is the official integrated development environment (IDE) for 
+ Android platform development and provides the fastest tools for building apps 
+ on every type of Android device.
+ .
+ WARNING: Installing this Debian package causes android-studio-ide-*-linux.zip
+ to be downloaded from dl.google.com and/or from other suggested mirrors. The
+ End User License Agreement of this binary package is available at
+ developer.android.com.

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+# Source debconf library.
+. /usr/share/debconf/confmodule
+
+#Get owners list
+db_metaget google-android-studio-installer/mirror owners
+OWNERS=$RET
+
+#Check if the package is the only owner
+if [ "$OWNERS" = "google-android-studio-installer" ]; then
+	#Ask the quastion
+	db_input high google-android-studio-installer/mirror || true
+	db_go
+fi
+
+#DEBHELPER#
+
+exit 0
