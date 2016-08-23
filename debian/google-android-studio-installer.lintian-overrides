@@ -1,1 +1,3 @@
+# Both folders here will exist a contain files after a successful install
 google-android-studio-installer: package-contains-empty-directory usr/share/doc/google-android-studio/
+google-android-studio-installer: desktop-command-not-in-package usr/share/applications/android-studio.desktop usr/lib/android-studio/bin/studio.sh

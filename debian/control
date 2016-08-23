@@ -11,6 +11,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/android-tools/google-android-studio
 
 Package: google-android-studio-installer
 Architecture: i386 amd64
+Recommends: default-jdk
 Depends: wget,
          make | build-essential | dpkg-dev,
          unzip,
