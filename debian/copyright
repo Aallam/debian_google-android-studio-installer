@@ -17,3 +17,9 @@ License: public-domain
  rights associated with the contents of this file for any purpose whatsoever.
  .
  No rights are reserved.
+
+Files: android-studio.svg
+Copyright: Google Inc.
+License: Apache-2.0
+ On Debian systems, the full text of the Apache License version 2.0 can be found
+ in the file '/usr/share/common-licenses/Apache-2.0'.
